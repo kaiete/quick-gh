@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick GH</title>
+    <style>
+        html {
+            background-color: black;
+            color: white;
+            font-family: 'Segoe UI', Ubuntu, sans-serif;
+            text-align: center;
+        }
+    </style>
+    <script>
+        async function load() {
+            let x = document.getElementById("repo").value, y = document.getElementById("branch").value, file = document.getElementById("file").value;
+            if (y == "") {
+                y = "main"
+            }
+            let z = await fetch("https://raw.githubusercontent.com/" + x + "/" + y + "/" + file)
+            let a = await z.text()
+            let b = open()
+            b.document.write(`<pre>` + a + `</pre>`)
+        }
+    </script>
+</head>
+<body>
+    <h1>Quick GitHub</h1>
+    <input placeholder="Repository (user/repo)..." id="repo">
+    <input placeholder="Branch... defaults to main" id="branch" value="">
+    <input placeholder="File..." id="file">
+    <button onclick="load()">Go!</button>
+</body>
+</html>
