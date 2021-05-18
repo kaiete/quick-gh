@@ -22,7 +22,7 @@
             let z = await fetch("https://raw.githubusercontent.com/" + x + "/" + y + "/" + file)
             let a = await z.text()
             let b = open()
-            b.document.write(`<pre>` + escape(a.replace("<","&lt;").replace(">","&gt;")) + `</pre>`)
+            b.document.write(`<pre>` + a.replace("<","&lt;").replace(">","&gt;") + `</pre>`)
         }
     </script>
 </head>
